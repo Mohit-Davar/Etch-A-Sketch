@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch a Sketch</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(87.4deg, rgb(255, 241, 165) 1.9%, rgb(200, 125, 76) 49.7%, rgb(83, 54, 54) 100.5%);
+
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: #c9c9c9;
+            display: grid;
+            box-shadow: inset 14px -14px 20px 0px rgba(0, 0, 0, 0.51), inset -14px 14px 20px 0px rgba(0, 0, 0, 0.5);
+
+            border-radius: 10px;
+
+        }
+
+        .red-bg {
+            border: 1px solid rgb(150, 150, 150);
+            width: calc(500px);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .black-bg {
+            border: 1px solid rgb(150, 150, 150);
+            height: auto;
+            width: inherit;
+            z-index: 2;
+            cursor: grab;
+        }
+
+        .border {
+            width: 700px;
+            height: 710px;
+            background-color: #fe0000;
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            z-index: -1;
+            border-radius: 70px;
+            box-shadow: 10px 0px 20px 5px rgba(0, 0, 0, 0.5);
+
+        }
+
+        .logo {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 40px;
+
+            color: #c7af83;
+        }
+
+        .button {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50%;
+            top: 84%;
+            left: 2%;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5), inset 0px 0px 10px rgba(255, 255, 255, 0.8);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .knob {
+            width: 80%;
+            height: 80%;
+            box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+        
+
+        .button:hover {
+            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.7), inset 0px 0px 15px rgba(255, 255, 255, 0.8);
+        }
+
+        #right {
+            left: 84%;
+        }
+
+        .diamond {
+            position: absolute;
+            top: 87%;
+            left: 43%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="border">
+        <div class="logo"><img src="logo.png" alt="image"></div>
+        <div class="button" id="left">
+            <div class="knob"></div>
+        </div>
+        <div class="diamond"><img src="diamond.png" alt="image"></div>
+        <div class="button" id="right">
+            <div class="knob"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="box" id="box">
+        </div>
+    </div>
+
+</body>
+<script>
+    var x= prompt("Enter the number of grids");
+    for (var i = 0; i < x; i++) {
+        var outerelement = document.createElement('div');
+        outerelement.className = 'red-bg';
+        var outerbox = document.getElementById('box');
+        outerbox.appendChild(outerelement);
+
+        for (var j = 0; j < x; j++) {
+            var innerelement = document.createElement('div');
+            innerelement.className = 'black-bg';
+            outerelement.appendChild(innerelement);
+
+            innerelement.addEventListener('mouseenter', function () {
+                this.style.backgroundColor = 'green';
+            });
+
+            innerelement.addEventListener('mouseleave', function () {
+                this.style.backgroundColor = 'green';
+            });
+        }
+    }
+
+</script>
+</html>
